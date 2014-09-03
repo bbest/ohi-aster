@@ -11,12 +11,19 @@ var width = 460,
     height = 300,
     radius = Math.min(width, height) / 2;
 
-var innerRadius = 0.2 * radius;
+var innerRadius = 0.3 * radius;
 
 var color = d3.scale.category20();
 
 var pie = d3.layout.pie()
     .value(function(d) { return d.width; });
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([0, 0])
+  .html(function(d) {
+    return "<strong>ID:</strong> <span style='color:red'>" + d.data.id + "</span>";
+  });
 
 var arc = d3.svg.arc()
         .innerRadius(innerRadius)
@@ -32,6 +39,8 @@ var svg = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+svg.call(tip);
+
 var path = svg.selectAll(".solidArc")
     .data(pie(dataset))
   .enter().append("path")
@@ -39,7 +48,8 @@ var path = svg.selectAll(".solidArc")
     .attr("class", "solidArc")
     .attr("stroke", "gray")
     .attr("d", arc)
-    .on("click", function (d) { console.log(d); });
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide);
 
 var outerPath = svg.selectAll(".outlineArc")
     .data(pie(dataset))
