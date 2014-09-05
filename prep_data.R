@@ -111,5 +111,7 @@ p = data.frame(
   label  = str_trim(gsub('\\\\n',' ', x$name_flower))
 )
 write.csv(p, csv_p, row.names=F)
-cat(paste('Extracted weighted average score:', round(d %>% filter(region_label=='GLOBAL' & goal=='Index') %>% select(center=score)), '\n'))
+cat(paste('Extracted weighted average score :', round(d %>% filter(region_label=='GLOBAL' & goal=='Index') %>% select(center=score)), '\n'))
 cat(paste('Calculated weighted average score:', round(weighted.mean(x$score, x$weight)), '\n'))
+# Extracted weighted average score : 71 
+# Calculated weighted average score: 69
