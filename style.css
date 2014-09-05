@@ -28,6 +28,12 @@ body {
   display: none;
 }
 
+.aster-score { 
+  line-height: 1;
+  font-weight: bold;
+  font-size: 500%;
+}
+
 .d3-tip {
   line-height: 1;
   font-weight: bold;
