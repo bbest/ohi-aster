@@ -33,7 +33,7 @@ aster <- function(data = data.frame(id     = c("FIS","MAR","AO","NP","CS"),
 
   # forward options using x
   x = list(
-    data             = toJSON(data),
+    data             = htmlwidgets:::toJSON(data),
     inner            = inner,
     stroke           = stroke,
     hover_color      = hover_color,
