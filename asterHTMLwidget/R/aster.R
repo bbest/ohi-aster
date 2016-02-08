@@ -17,6 +17,7 @@
 #' @param margin_bottom chart bottom margin, default 40
 #' @param margin_left chart left margin, default 80
 #'
+#' @import htmlwidgets
 #' @export
 aster <- function(data = data.frame(id     = c("FIS","MAR","AO","NP","CS"),
                                     order  = c(1.1,1.3,2.0,3.0,4.0),
@@ -32,7 +33,7 @@ aster <- function(data = data.frame(id     = c("FIS","MAR","AO","NP","CS"),
 
   # forward options using x
   x = list(
-    data             = jsonlite::toJSON(data),
+    data             = toJSON(data),
     inner            = inner,
     stroke           = stroke,
     hover_color      = hover_color,
